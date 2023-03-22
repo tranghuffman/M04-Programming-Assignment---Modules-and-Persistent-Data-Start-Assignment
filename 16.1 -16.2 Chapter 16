@@ -1,0 +1,22 @@
+#Save the following text lines to a file called books.csv (notice that if the fields are separated by commas, you need to surround a field with quotes if it contains a comma):
+
+#author,book
+#J R R Tolkien,The Hobbit
+#Lynne Truss,"Eats, Shoots & Leaves"
+
+import csv
+books = [
+    ['author', 'book'],
+    ['J R R Tolkien', 'The Hobbit'],
+    ['Lynne Truss', "Eats, Shoots & Leaves"]
+]
+
+with open('books.csv', 'w') as file:
+    csvout = csv.writer(file)
+    csvout.writerows(books)
+
+#Use the csv module and its DictReader method to read books.csv to the variable books. Print the values in books. Did DictReader handle the quotes and commas in the second book’s title?
+with open('books.csv', 'rt') as file:
+    books = csv.DictReader(file, delimiter = ',')
+    for book in books:
+        print(book)
